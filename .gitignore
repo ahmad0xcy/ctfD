@@ -1,0 +1,18 @@
+# Docker volumes & runtime data
+mysql/
+uploads/
+logs/
+redis/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Env files
+.env
+
+# Database files
+*.db
+
+# Log files
+*.log
