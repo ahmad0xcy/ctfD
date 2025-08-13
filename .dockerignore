@@ -1,0 +1,12 @@
+@"
+.git
+.gitignore
+.env
+*.env*
+__pycache__/
+node_modules/
+.vscode/
+.idea/
+CTFd/uploads/
+uploads/
+"@ | Out-File -Encoding UTF8 .dockerignore
