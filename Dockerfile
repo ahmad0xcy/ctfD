@@ -1,16 +1,15 @@
 # استخدم صورة CTFd الرسمية
 FROM ghcr.io/ctfd/ctfd:latest
+
+# مسار عمل CTFd داخل الصورة
 WORKDIR /opt/CTFd
 
-# انسخ الثيم/الإضافات إذا موجودة
-# (احذف السطر إذا ما عندك المجلد)
-COPY ./themes/ /opt/CTFd/CTFd/themes/
+# انسخ الثيمات/الإضافات (لو ما عندك هالمجلدات بيمشي الحال)
+COPY ./themes/  /opt/CTFd/CTFd/themes/
 COPY ./plugins/ /opt/CTFd/CTFd/plugins/
 
-# (اختياري) متطلبات إضافاتك
-# COPY requirements.txt /opt/CTFd/requirements.txt
-# RUN pip install --no-cache-dir -r /opt/CTFd/requirements.txt
-
-# Railway يمرر PORT تلقائيًا
+# Railway يمرّر PORT تلقائيًا (الافتراضي 8000)
 ENV PORT=8000
+
+# شغّل السيرفر
 CMD ["bash", "-lc", "exec gunicorn -w ${WORKERS:-2} -k gevent -b 0.0.0.0:${PORT} 'CTFd:create_app()'"]
