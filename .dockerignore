@@ -1,12 +1,30 @@
-@"
+# عام
 .git
 .gitignore
-.env
-*.env*
-__pycache__/
-node_modules/
+README.md
+LICENSE
+*.md
+*.log
+*.tmp
+.DS_Store
+
+# بيئات تطوير
 .vscode/
 .idea/
-CTFd/uploads/
-uploads/
-"@ | Out-File -Encoding UTF8 .dockerignore
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# باكدجات/Artifacts كبيرة
+node_modules/
+dist/
+build/
+coverage/
+tests/
+docs/
+
+# أسرار محلية (لا ترفعها داخل الصورة)
+.env
+.env.*
+!env.example
