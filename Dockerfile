@@ -3,6 +3,10 @@ RUN pip install --no-cache-dir psycopg2-binary
 WORKDIR /opt/CTFd
 
 ENV PORT=8000
+ENV DATABASE_URL=postgresql+psycopg2://postgres:cyIPcYtDdfLUVnaLpmaywDTdcjOBDkoj@postgres.railway.internal:5432/railway
+ENV SQLALCHEMY_DATABASE_URI=${DATABASE_URL}
 
-# لا تغيّر CMD هذا إلا مؤقتًا للتشخيص
-CMD ["bash","-lc","echo DATABASE_URL=$DATABASE_URL && echo SQLALCHEMY_DATABASE_URI=$SQLALCHEMY_DATABASE_URI && exec gunicorn -w ${WORKERS:-2} -k gevent -b 0.0.0.0:${PORT} 'CTFd:create_app()'"]
+# حيلة صغيرة لكسر الكاش وإجبار rebuild عند كل دفع
+ARG CACHE_BUST=1
+
+CMD ["bash","-lc","exec gunicorn -w ${WORKERS:-2} -k gevent -b 0.0.0.0:${PORT} 'CTFd:create_app()'"]
