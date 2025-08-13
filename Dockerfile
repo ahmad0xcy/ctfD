@@ -5,8 +5,7 @@ FROM ghcr.io/ctfd/ctfd:latest
 WORKDIR /opt/CTFd
 
 # انسخ الثيمات/الإضافات (لو ما عندك هالمجلدات بيمشي الحال)
-COPY ./themes/  /opt/CTFd/CTFd/themes/
-COPY ./plugins/ /opt/CTFd/CTFd/plugins/
+
 
 # Railway يمرّر PORT تلقائيًا (الافتراضي 8000)
 ENV PORT=8000
