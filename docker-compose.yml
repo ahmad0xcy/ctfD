@@ -9,7 +9,7 @@ services:
       - REDIS_URL=redis://cache:6379
       - UPLOAD_FOLDER=/var/uploads
       - LOG_FOLDER=/var/log/CTFd
-      - WORKERS=9
+      - WORKERS=2
     volumes:
       - ./uploads:/var/uploads
       - ./logs:/var/log/CTFd
